@@ -1,0 +1,612 @@
+/* ====================== Response Table ====================== */
+.responstable {
+  table-layout:fixed;
+  width: 100%;
+  margin: 1em 0;
+/*  font-size: 11px;*/
+  /*overflow-x: auto;*/
+  background: #FFF;
+  color: #024457;
+  border-radius: 5px;
+  border: 1px solid #167F92;
+}
+.responstable tr {
+  border: 1px solid #D9E4E6;
+}
+.responstable tr:nth-child(odd) {
+  background-color: #EAF3F3;
+}
+.responstable th {
+  display: none;
+  border: 1px solid #FFF;
+  background-color: #167F92;
+  color: #FFF;
+  overflow-x: auto;
+  word-wrap: break-word;
+  padding: 1em 0.3em 1em 0.3em;
+  text-align: center;
+}
+.responstable th:first-child {
+  display: table-cell;
+  text-align: center;
+}
+.responstable th:nth-child(2) {
+  display: table-cell;
+}
+.responstable th:nth-child(2) span {
+  display: none;
+}
+.responstable th:nth-child(2):after {
+  content: attr(data-th);
+}
+
+.responstable td {
+  display: block;
+  word-wrap: break-word;
+  /*max-width: 7em;*/
+  padding: 0.3em 0.3em 0.3em 0.3em;
+}
+.responstable td:first-child {
+  display: table-cell;
+  text-align: center;
+  border-right: 1px solid #D9E4E6;
+}
+
+.responstable th, .responstable td {
+  text-align: left;
+  margin: .5em 1em;
+}
+
+@media (min-width: 480px) {
+  .responstable th:nth-child(2) span {
+    display: block;
+  }
+  .responstable th:nth-child(2):after {
+    display: none;
+  }
+
+  .responstable td {
+    border: 1px solid #D9E4E6;
+  }
+
+  .responstable th {
+    display: table-cell;
+    text-align: center;
+    padding: 1em 0.3em 1em 0.3em;
+    /*padding: 1em;*/
+  }
+
+  .responstable td {
+    display: table-cell;
+    text-align: center;
+    padding: 0.3em 0.3em 0.3em 0.3em;
+    /*padding: 1em;*/
+  }
+
+
+/* ====================== End Of Response Table ====================== */
+
+/* ====================== Response Red Table ====================== */
+.responstable-red {
+  table-layout:fixed;
+  width: 100%;
+  margin: 1em 0;
+/*  font-size: 11px;*/
+  /*overflow-x: auto;*/
+  background: #FFF;
+  color: #d9534f;
+  border-radius: 5px;
+  border: 1px solid #167F92;
+}
+.responstable-red tr {
+  border: 1px solid #D9E4E6;
+}
+.responstable-red tr:nth-child(odd) {
+  background-color: #EAF3F3;
+}
+.responstable-red th {
+  display: none;
+  border: 1px solid #FFF;
+  background-color: #d9534f;
+  color: #FFF;
+  overflow-x: auto;
+  word-wrap: break-word;
+  padding: 1em 0.3em 1em 0.3em;
+  text-align: center;
+}
+.responstable-red th:first-child {
+  display: table-cell;
+  text-align: center;
+}
+.responstable-red th:nth-child(2) {
+  display: table-cell;
+}
+.responstable-red th:nth-child(2) span {
+  display: none;
+}
+.responstable-red th:nth-child(2):after {
+  content: attr(data-th);
+}
+
+.responstable-red td {
+  display: block;
+  word-wrap: break-word;
+  /*max-width: 7em;*/
+  padding: 0.3em 0.3em 0.3em 0.3em;
+}
+.responstable-red td:first-child {
+  display: table-cell;
+  text-align: center;
+  border-right: 1px solid #D9E4E6;
+}
+
+.responstable-red th, .responstable-red td {
+  text-align: left;
+  margin: .5em 1em;
+}
+
+@media (min-width: 480px) {
+  .responstable-red th:nth-child(2) span {
+    display: block;
+  }
+  .responstable-red th:nth-child(2):after {
+    display: none;
+  }
+
+  .responstable-red td {
+    border: 1px solid #D9E4E6;
+  }
+
+  .responstable-red th {
+    display: table-cell;
+    text-align: center;
+    padding: 1em 0.3em 1em 0.3em;
+    /*padding: 1em;*/
+  }
+
+  .responstable-red td {
+    display: table-cell;
+    text-align: center;
+    padding: 0.3em 0.3em 0.3em 0.3em;
+    /*padding: 1em;*/
+  }
+
+
+/* ====================== End Of Response Red Table ====================== */
+
+/* ======================== Response Table-nomargin ============================= */
+
+  .responstable-nomargin {
+    table-layout:fixed;
+    width: 100%;
+    margin: 0 0;
+/*    font-size: 11px;*/
+    /*overflow-x: auto;*/
+    background: #FFF;
+    color: #024457;
+    border-radius: 5px;
+    border: 1px solid #167F92;
+  }
+  .responstable-nomargin tr {
+    border: 1px solid #D9E4E6;
+  }
+  .responstable-nomargin tr:nth-child(odd) {
+    background-color: #EAF3F3;
+  }
+  .responstable-nomargin th {
+    display: none;
+    border: 1px solid #FFF;
+    background-color: #167F92;
+    color: #FFF;
+    overflow-x: auto;
+    word-wrap: break-word;
+    padding: 1em 0.3em 1em 0.3em;
+    text-align: center;
+  }
+  .responstable-nomargin th:first-child {
+    display: table-cell;
+    text-align: center;
+  }
+  .responstable-nomargin th:nth-child(2) {
+    display: table-cell;
+  }
+  .responstable-nomargin th:nth-child(2) span {
+    display: none;
+  }
+  .responstable-nomargin th:nth-child(2):after {
+    content: attr(data-th);
+  }
+
+  .responstable-nomargin td {
+    display: block;
+    word-wrap: break-word;
+    /*max-width: 7em;*/
+    padding: 0.3em 0.3em 0.3em 0.3em;
+  }
+  .responstable-nomargin td:first-child {
+    display: table-cell;
+    text-align: center;
+    border-right: 1px solid #D9E4E6;
+  }
+
+  .responstable-nomargin th, .responstable-nomargin td {
+    text-align: left;
+    margin: .5em 1em;
+  }
+
+  .responstable-nomargin th:nth-child(2) span {
+    display: block;
+  }
+  .responstable-nomargin th:nth-child(2):after {
+    display: none;
+  }
+
+  .responstable-nomargin td {
+    border: 1px solid #D9E4E6;
+  }
+
+  .responstable-nomargin th {
+    display: table-cell;
+    text-align: center;
+    padding: 0.3em 0.3em 0.3em 0.3em;
+  }
+
+  .responstable-nomargin td {
+    display: table-cell;
+    text-align: center;
+    padding: 0.3em 0.3em 0.3em 0.3em;
+  }
+
+/* ======================== End Of Response Table-nomargin ======================= */
+
+.divscroll{
+    overflow-x: scroll;
+  }
+}
+
+.divscroll{
+  overflow-x: scroll;
+}
+
+/* ================================= UNTUK REPORT=====================================*/
+
+
+.tablereport {
+  table-layout:fixed;
+  width: 100%;
+  margin: 1em 0;
+  font-size: 11px;
+  /*overflow-x: auto;*/
+  background: #FFF;
+  color: #024457;
+  border-radius: 5px;
+  border: 1px solid #167F92;
+}
+.tablereport tr {
+  border: 2px solid black;
+}
+.tablereport tr:nth-child(odd) {
+  background-color: transparent;
+}
+.tablereport th {
+  display: none;
+  border: 1px solid black;
+  background-color: transparent;
+  color: black;
+  overflow-x: auto;
+  word-wrap: break-word;
+  padding: 1em 0.3em 1em 0.3em;
+  text-align: center;
+}
+.tablereport th:first-child {
+  display: table-cell;
+  text-align: center;
+}
+.tablereport th:nth-child(2) {
+  display: table-cell;
+}
+.tablereport th:nth-child(2) span {
+  display: none;
+}
+.tablereport th:nth-child(2):after {
+  content: attr(data-th);
+}
+
+.tablereport td {
+  display: block;
+  word-wrap: break-word;
+  /*max-width: 7em;*/
+  padding: 0.3em 0.3em 0.3em 0.3em;
+}
+
+.tablereport td:first-child {
+  display: table-cell ;
+  text-align: center;
+  border-right: 1px solid black;
+}
+
+.tablereport td:nth-child(2), .tablereport td:nth-child(3), .tablereport td:nth-child(4), .tablereport td:nth-child(5), .tablereport td:nth-child(6), .tablereport td:nth-child(7), .tablereport td:nth-child(8), .tablereport td:nth-child(9), .tablereport td:nth-child(10), .tablereport td:nth-child(11), .tablereport td:nth-child(12), .tablereport td:nth-child(13), .tablereport td:nth-child(14), .tablereport td:nth-child(15), .tablereport td:nth-child(16), .tablereport td:nth-child(17), .tablereport td:nth-child(18), .tablereport td:nth-child(19), .tablereport td:nth-child(20) {
+  display: table-cell ;
+ border-right: 1px solid black;
+}
+
+.tablereport th, .tablereport td {
+  text-align: left;
+  margin: .5em 1em;
+}
+
+
+
+@media (min-width: 480px) {
+  .tablereport th:nth-child(2) span {
+    display: block;
+  }
+  .tablereport th:nth-child(2):after {
+    display: none;
+  }
+
+  .tablereport td {
+    border: 1px solid #D9E4E6;
+  }
+
+  .tablereport th {
+    display: table-cell;
+    text-align: center;
+    padding: 1em 0.3em 1em 0.3em;
+    /*padding: 1em;*/
+  }
+
+  .tablereport td {
+    display: table-cell;
+    text-align: center;
+    padding: 0.3em 0.3em 0.3em 0.3em;
+    /*padding: 1em;*/
+  }
+
+  /* =============== Response table-nomargin ================ */
+  .tablereport-nomargin th:nth-child(2) span {
+    display: block;
+  }
+  .tablereport-nomargin th:nth-child(2):after {
+    display: none;
+  }
+
+  .tablereport-nomargin td {
+    border: 1px solid #D9E4E6;
+  }
+
+  .tablereport-nomargin th {
+    display: table-cell;
+    text-align: center;
+    padding: 0.3em 0.3em 0.3em 0.3em;
+  }
+
+  .tablereport-nomargin td {
+    display: table-cell;
+    text-align: center;
+    padding: 0.3em 0.3em 0.3em 0.3em;
+  }
+
+  /* ============ End TABLE REPORT ============ */
+
+
+
+  /* ================================ TABLE REPORT FONT SIZE 11 ============================ */
+
+.tablereport-font11 {
+  table-layout:fixed;
+  width: 100%;
+  margin: 1em 0;
+/*  font-size: 11px;*/
+  /*overflow-x: auto;*/
+  background: #FFF;
+  color: #024457;
+  border-radius: 5px;
+  border: 1px solid #167F92;
+}
+.tablereport-font11 tr {
+  border: 2px solid black;
+}
+.tablereport-font11 tr:nth-child(odd) {
+  background-color: transparent;
+}
+.tablereport-font11 th {
+  display: none;
+  border: 1px solid black;
+  background-color: transparent;
+  color: black;
+  overflow-x: auto;
+  word-wrap: break-word;
+  padding: 1em 0.3em 1em 0.3em;
+  text-align: center;
+}
+.tablereport-font11 th:first-child {
+  display: table-cell;
+  text-align: center;
+}
+.tablereport-font11 th:nth-child(2) {
+  display: table-cell;
+}
+.tablereport-font11 th:nth-child(2) span {
+  display: none;
+}
+.tablereport-font11 th:nth-child(2):after {
+  content: attr(data-th);
+}
+
+.tablereport-font11 td {
+  display: block;
+  word-wrap: break-word;
+  /*max-width: 7em;*/
+  padding: 0.3em 0.3em 0.3em 0.3em;
+}
+
+.tablereport-font11 td:first-child {
+  display: table-cell ;
+  text-align: center;
+  border-right: 1px solid black;
+}
+
+.tablereport-font11 td:nth-child(2), .tablereport-font11 td:nth-child(3), .tablereport-font11 td:nth-child(4), .tablereport-font11 td:nth-child(5), .tablereport-font11 td:nth-child(6), .tablereport-font11 td:nth-child(7), .tablereport-font11 td:nth-child(8), .tablereport-font11 td:nth-child(9), .tablereport-font11 td:nth-child(10), .tablereport-font11 td:nth-child(11), .tablereport-font11 td:nth-child(12), .tablereport-font11 td:nth-child(13), .tablereport-font11 td:nth-child(14), .tablereport-font11 td:nth-child(15), .tablereport-font11 td:nth-child(16), .tablereport-font11 td:nth-child(17), .tablereport-font11 td:nth-child(18), .tablereport-font11 td:nth-child(19), .tablereport-font11 td:nth-child(20) {
+  display: table-cell ;
+ border-right: 1px solid black;
+}
+
+.tablereport-font11 th, .tablereport-font11 td {
+  text-align: left;
+  margin: .5em 1em;
+}
+
+
+
+@media (min-width: 480px) {
+  .tablereport-font11 th:nth-child(2) span {
+    display: block;
+  }
+  .tablereport-font11 th:nth-child(2):after {
+    display: none;
+  }
+
+  .tablereport-font11 td {
+    border: 1px solid #D9E4E6;
+  }
+
+  .tablereport-font11 th {
+    display: table-cell;
+    text-align: center;
+    padding: 1em 0.3em 1em 0.3em;
+    /*padding: 1em;*/
+  }
+
+  .tablereport-font11 td {
+    display: table-cell;
+    text-align: center;
+    padding: 0.3em 0.3em 0.3em 0.3em;
+    /*padding: 1em;*/
+  }
+
+  /* =============== Response table-nomargin ================ */
+  .tablereport-font11-nomargin th:nth-child(2) span {
+    display: block;
+  }
+  .tablereport-font11-nomargin th:nth-child(2):after {
+    display: none;
+  }
+
+  .tablereport-font11-nomargin td {
+    border: 1px solid #D9E4E6;
+  }
+
+  .tablereport-font11-nomargin th {
+    display: table-cell;
+    text-align: center;
+    padding: 0.3em 0.3em 0.3em 0.3em;
+  }
+
+  .tablereport-font11-nomargin td {
+    display: table-cell;
+    text-align: center;
+    padding: 0.3em 0.3em 0.3em 0.3em;
+  }
+
+  /* ============================= END OHTABLE REPORT FONT SIZE 11 ============================ */
+
+  /* ================================ TABLE REPORT FONT SIZE 11 NO Border ============================ */
+
+.tablereport-nobrd {
+  table-layout:fixed;
+  width: 100%;
+  margin: 1em 0;
+  font-size: 11px;
+  /*overflow-x: auto;*/
+  background: #FFF;
+  color: #024457;
+  border-radius: 5px;
+  border: none;
+}
+.tablereport-nobrd tr {
+  border: none;
+}
+.tablereport-nobrd tr:nth-child(odd) {
+  background-color: transparent;
+}
+.tablereport-nobrd th {
+  display: none;
+  border: none;
+  background-color: transparent;
+  color: black;
+  overflow-x: auto;
+  word-wrap: break-word;
+  padding: 1em 0.3em 1em 0.3em;
+  text-align: center;
+}
+.tablereport-nobrd th:first-child {
+  display: table-cell;
+  text-align: center;
+}
+.tablereport-nobrd th:nth-child(2) {
+  display: table-cell;
+}
+.tablereport-nobrd th:nth-child(2) span {
+  display: none;
+}
+.tablereport-nobrd th:nth-child(2):after {
+  content: attr(data-th);
+}
+
+.tablereport-nobrd td {
+  display: block;
+  word-wrap: break-word;
+  /*max-width: 7em;*/
+  padding: 0.3em 0.3em 0.3em 0.3em;
+}
+
+.tablereport-nobrd td:first-child {
+  display: table-cell ;
+  text-align: center;
+  border-right: none;
+}
+
+.tablereport-nobrd td:nth-child(2), .tablereport-nobrd td:nth-child(3), .tablereport-nobrd td:nth-child(4), .tablereport-nobrd td:nth-child(5), .tablereport-nobrd td:nth-child(6), .tablereport-nobrd td:nth-child(7), .tablereport-nobrd td:nth-child(8), .tablereport-nobrd td:nth-child(9), .tablereport-nobrd td:nth-child(10), .tablereport-nobrd td:nth-child(11), .tablereport-nobrd td:nth-child(12), .tablereport-nobrd td:nth-child(13), .tablereport-nobrd td:nth-child(14), .tablereport-nobrd td:nth-child(15), .tablereport-nobrd td:nth-child(16), .tablereport-nobrd td:nth-child(17), .tablereport-nobrd td:nth-child(18), .tablereport-nobrd td:nth-child(19), .tablereport-nobrd td:nth-child(20) {
+  display: table-cell ;
+ border-right: none;
+}
+
+.tablereport-nobrd th, .tablereport-nobrd td {
+  text-align: left;
+  margin: .5em 1em;
+}
+
+
+
+@media (min-width: 480px) {
+  .tablereport-nobrd th:nth-child(2) span {
+    display: block;
+  }
+  .tablereport-nobrd th:nth-child(2):after {
+    display: none;
+  }
+
+  .tablereport-nobrd td {
+    border: none;
+  }
+
+  .tablereport-nobrd th {
+    display: table-cell;
+    text-align: center;
+    padding: 1em 0.3em 1em 0.3em;
+    /*padding: 1em;*/
+  }
+
+  .tablereport-nobrd td {
+    display: table-cell;
+    text-align: center;
+    padding: 0.3em 0.3em 0.3em 0.3em;
+    /*padding: 1em;*/
+  }
+ /* Titip untuk page break - KEEP TOGETHER kalau di Crystal Report */
+  .pageBreak{
+    page-break-before: always;
+}
+  /* ============================= END OHTABLE REPORT FONT SIZE 11 ============================ */
+

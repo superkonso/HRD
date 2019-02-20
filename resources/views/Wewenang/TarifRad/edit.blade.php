@@ -1,0 +1,471 @@
+@extends('layouts.main')
+
+@section('title', Auth::User()->cPanel->TCpanel_AppName.' | Edit Tarif Rad')
+
+@section('content_header', 'Edit Tarif Rad')
+
+@section('header_description', '')
+
+@section('menu_desc', 'Tarif')
+
+@section('link_menu_desc', '/tarifrad')
+
+@section('sub_menu_desc', 'Edit')
+
+@section('content')
+
+@include('Partials.message')
+
+<div class="row">
+	    <div class="col-md-12 col-sm-12 col-xs-12">
+	        <div class="box box-primary">
+	            <div class="box-header">
+	                @if(Session::has('flash_message'))
+	                    <div class="alert alert-success"><span class="glyphicon glyphicon-ok"></span><em> {!! session('flash_message') !!}</em></div>
+	                @endif
+	                <h3 class="box-title">Form Tarif</h3>
+	            </div>
+	            <div class="box-body">
+	                <form class="form-horizontal form-label-left" action="/tarifrad/{{$tarif->id}}" method="post" novalidate>
+		                {{csrf_field()}}
+    				    {{method_field('PUT')}}
+		           
+		                <div class="form-group">
+		                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="kode">Kode Tarif </label>
+		                    <div class="col-md-3 col-sm-3 col-xs-6">
+		                      <input type="text" id="kode" class="form-control col-md-7 col-xs-12" readonly="readonly" name"kode" placeholder="Tarif Kode" required="required" value="{{$tarif->TTarifRad_Kode}}">
+		                    </div>
+		                </div>
+
+		                <div class="form-group">
+		                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="status">Status</label>
+		                    <div class="col-md-3 col-sm-3 col-xs-12">
+		                     <select id="status" name="status" class="form-control col-md-7 col-xs-12">
+		                     	<option value="A" @if(!empty($tarif->TTarifRad_Status)) @if ("A"==$tarif->TTarifRad_Status) selected="selected" @endif @endif>Aktif</option>
+		                     	<option value="N" @if(!empty($tarif->TTarifRad_Status)) @if ("N"==$tarif->TTarifRad_Status) selected="selected" @endif @endif>Non Aktif</option>
+		                     </select>
+		                    </div>
+		                </div>
+
+		                {{-- Edit Combo hanya isi 1 yang dipilih --}}
+		                <div class="form-group">
+		                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="kelompok">Kelompok</label>
+		                    <div class="col-md-3 col-sm-3 col-xs-12">
+		                     <select id="kelompok" name="kelompok" class="form-control col-md-7 col-xs-12" >
+		                     	@foreach($kelompoks as $kel)
+		                     		@if(!empty($tarif->TTarifVar_Kode)) 
+	                          				@if ($kel->TTarifVar_Kode==$tarif->TTarifVar_Kode)  
+	                          					<option value="{{$kel->TTarifVar_Kode}}" selected="selected"> 
+	                          					{{$kel->TTarifVar_Nama}}</option>
+	                          				@endif 
+	                          			@endif
+	                          	@endforeach      
+		                     </select>
+		                    </div>
+		                </div>
+
+		                <div class="form-group">
+		                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nama">Tarif Nama<span class="required">*</span>
+		                    </label>
+		                    <div class="col-md-6 col-sm-6 col-xs-12">
+		                      <input type="text" id="nama" class="form-control col-md-7 col-xs-12" name="nama" placeholder="Tarif Nama" value="{{$tarif->TTarifRad_Nama}}" required="required" >
+		                    </div>
+		                </div>
+
+						<div class="form-group">
+		                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="rsftvip">Tarif RS FT VIP
+		                    </label>
+		                    <div class="col-md-6 col-sm-6 col-xs-12">
+		                      <input onkeyup="changeFormat(this.id, this.value)" type="text" id="rsftvip" class="form-control col-md-7 col-xs-12" name="rsftvip" placeholder="0" value="{{$tarif->TTarifRad_RSFTVIP}}">
+		                    </div>
+		                </div>
+
+		                <div class="form-group">
+		                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="rsptvip">Tarif RS PT VIP
+		                    </label>
+		                    <div class="col-md-6 col-sm-6 col-xs-12">
+		                      <input onkeyup="changeFormat(this.id, this.value)" type="text" id="rsptvip" class="form-control col-md-7 col-xs-12" name="rsptvip" placeholder="0" value="{{$tarif->TTarifRad_RSPTVIP}}">
+		                    </div>
+		                </div>
+
+		                <div class="form-group">
+		                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="drftvip">Tarif Dokter FT VIP
+		                    </label>
+		                    <div class="col-md-6 col-sm-6 col-xs-12">
+		                      <input onkeyup="changeFormat(this.id, this.value)" type="text" id="drftvip" class="form-control col-md-7 col-xs-12" name="drftvip" placeholder="0" value="{{$tarif->TTarifRad_DokterFTVIP}}">
+		                    </div>
+		                </div>
+
+		                <div class="form-group">
+		                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="drptvip">Tarif Dokter PT VIP
+		                    </label>
+		                    <div class="col-md-6 col-sm-6 col-xs-12">
+		                      <input onkeyup="changeFormat(this.id, this.value)" type="text" id="drptvip" class="form-control col-md-7 col-xs-12" name="drptvip" placeholder="0" value="{{$tarif->TTarifRad_DokterPTVIP}}">
+		                    </div>
+		                </div>
+
+		                <div class="form-group">
+		                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="vip">Tarif VIP
+		                    </label>
+		                    <div class="col-md-6 col-sm-6 col-xs-12">
+		                      <input onkeyup="changeFormat(this.id, this.value)" type="text" id="vip" class="form-control col-md-7 col-xs-12" name="vip" placeholder="0" required="required" value="{{$tarif->TTarifRad_VIP}}">
+		                    </div>
+		                </div>
+		                
+		                <div class="form-group">
+		                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="rsftutama">Tarif RS FT Utama
+		                    </label>
+		                    <div class="col-md-6 col-sm-6 col-xs-12">
+		                      <input onkeyup="changeFormat(this.id, this.value)" type="text" id="rsftutama" class="form-control col-md-7 col-xs-12" name="rsftutama" placeholder="0" value="{{$tarif->TTarifRad_RSFTUtama}}">
+		                    </div>
+		                </div>
+
+		                <div class="form-group">
+		                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="rsptutama">Tarif RS PT Utama
+		                    </label>
+		                    <div class="col-md-6 col-sm-6 col-xs-12">
+		                      <input onkeyup="changeFormat(this.id, this.value)" type="text" id="rsptutama" class="form-control col-md-7 col-xs-12" name="rsptutama" placeholder="0" value="{{$tarif->TTarifRad_RSPTUtama}}">
+		                    </div>
+		                </div>
+
+		                <div class="form-group">
+		                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="drftutama">Tarif Dokter FT Utama
+		                    </label>
+		                    <div class="col-md-6 col-sm-6 col-xs-12">
+		                      <input onkeyup="changeFormat(this.id, this.value)" type="text" id="drftutama" class="form-control col-md-7 col-xs-12" name="drftutama" placeholder="0" value="{{$tarif->TTarifRad_DokterFTUtama}}">
+		                    </div>
+		                </div>
+
+		                <div class="form-group">
+		                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="drptutama">Tarif Dokter PT Utama
+		                    </label>
+		                    <div class="col-md-6 col-sm-6 col-xs-12">
+		                      <input onkeyup="changeFormat(this.id, this.value)" type="text" id="drptutama" class="form-control col-md-7 col-xs-12" name="drptutama" placeholder="0" value="{{$tarif->TTarifRad_DokterPTUtama}}">
+		                    </div>
+		                </div>
+
+		                <div class="form-group">
+		                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="utama">Tarif Utama
+		                    </label>
+		                    <div class="col-md-6 col-sm-6 col-xs-12">
+		                      <input onkeyup="changeFormat(this.id, this.value)" type="text" id="utama" class="form-control col-md-7 col-xs-12" name="utama" placeholder="0" required="required" value="{{$tarif->TTarifRad_Utama}}">
+		                    </div>
+		                </div>
+
+		                <div class="form-group">
+		                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="rsftkelas1">Tarif RS FT Kelas 1
+		                    </label>
+		                    <div class="col-md-6 col-sm-6 col-xs-12">
+		                      <input onkeyup="changeFormat(this.id, this.value)" type="text" id="rsftkelas1" class="form-control col-md-7 col-xs-12" name="rsftkelas1" placeholder="0" value="{{$tarif->TTarifRad_RSFTKelas1}}">
+		                    </div>
+		                </div>
+
+		                <div class="form-group">
+		                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="rsptkelas1">Tarif RS PT Kelas 1
+		                    </label>
+		                    <div class="col-md-6 col-sm-6 col-xs-12">
+		                      <input onkeyup="changeFormat(this.id, this.value)" type="text" id="rsptkelas1" class="form-control col-md-7 col-xs-12" name="rsptkelas1" placeholder="0" value="{{$tarif->TTarifRad_RSPTKelas1}}">
+		                    </div>
+		                </div>
+
+		                <div class="form-group">
+		                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="drftkelas1">Tarif Dokter FT Kelas 1
+		                    </label>
+		                    <div class="col-md-6 col-sm-6 col-xs-12">
+		                      <input onkeyup="changeFormat(this.id, this.value)" type="text" id="drftkelas1" class="form-control col-md-7 col-xs-12" name="drftkelas1" placeholder="0" value="{{$tarif->TTarifRad_DokterFTKelas1}}">
+		                    </div>
+		                </div>
+
+		                <div class="form-group">
+		                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="drptkelas1">Tarif Dokter PT Kelas 1
+		                    </label>
+		                    <div class="col-md-6 col-sm-6 col-xs-12">
+		                      <input onkeyup="changeFormat(this.id, this.value)" type="text" id="drptkelas1" class="form-control col-md-7 col-xs-12" name="drptkelas1" placeholder="0" value="{{$tarif->TTarifRad_DokterPTKelas1}}">
+		                    </div>
+		                </div>
+
+		                <div class="form-group">
+		                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="kelas1">Tarif Kelas 1
+		                    </label>
+		                    <div class="col-md-6 col-sm-6 col-xs-12">
+		                      <input onkeyup="changeFormat(this.id, this.value)" type="text" id="kelas1" class="form-control col-md-7 col-xs-12" name="kelas1" placeholder="0" required="required" value="{{$tarif->TTarifRad_Kelas1}}">
+		                    </div>
+		                </div>
+
+		                <div class="form-group">
+		                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="rsftkelas2">Tarif RS FT Kelas 2
+		                    </label>
+		                    <div class="col-md-6 col-sm-6 col-xs-12">
+		                      <input onkeyup="changeFormat(this.id, this.value)" type="text" id="rsftkelas2" class="form-control col-md-7 col-xs-12" name="rsftkelas2" placeholder="0" value="{{$tarif->TTarifRad_RSFTKelas2}}">
+		                    </div>
+		                </div>
+
+		                <div class="form-group">
+		                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="rsptkelas2">Tarif RS PT Kelas 2
+		                    </label>
+		                    <div class="col-md-6 col-sm-6 col-xs-12">
+		                      <input onkeyup="changeFormat(this.id, this.value)" type="text" id="rsptkelas2" class="form-control col-md-7 col-xs-12" name="rsptkelas2" placeholder="0" value="{{$tarif->TTarifRad_RSPTKelas2}}">
+		                    </div>
+		                </div>
+
+		                <div class="form-group">
+		                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="drftkelas2">Tarif Dokter FT Kelas 2
+		                    </label>
+		                    <div class="col-md-6 col-sm-6 col-xs-12">
+		                      <input onkeyup="changeFormat(this.id, this.value)" type="text" id="drftkelas2" class="form-control col-md-7 col-xs-12" name="drftkelas2" placeholder="0" value="{{$tarif->TTarifRad_DokterFTKelas2}}">
+		                    </div>
+		                </div>
+
+		                <div class="form-group">
+		                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="drptkelas2">Tarif Dokter PT Kelas 2
+		                    </label>
+		                    <div class="col-md-6 col-sm-6 col-xs-12">
+		                      <input onkeyup="changeFormat(this.id, this.value)" type="text" id="drptkelas2" class="form-control col-md-7 col-xs-12" name="drptkelas2" placeholder="0" value="{{$tarif->TTarifRad_DokterPTKelas2}}">
+		                    </div>
+		                </div>
+
+		                <div class="form-group">
+		                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="kelas2">Tarif Kelas 2
+		                    </label>
+		                    <div class="col-md-6 col-sm-6 col-xs-12">
+		                      <input onkeyup="changeFormat(this.id, this.value)" type="text" id="kelas2" class="form-control col-md-7 col-xs-12" name="kelas2" placeholder="0" required="required" value="{{$tarif->TTarifRad_Kelas2}}">
+		                    </div>
+		                </div>
+		                
+		                <div class="form-group">
+		                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="rsftkelas3">Tarif RS FT Kelas 3
+		                    </label>
+		                    <div class="col-md-6 col-sm-6 col-xs-12">
+		                      <input onkeyup="changeFormat(this.id, this.value)" type="text" id="rsftkelas3" class="form-control col-md-7 col-xs-12" name="rsftkelas3" placeholder="0" value="{{$tarif->TTarifRad_RSFTKelas3}}">
+		                    </div>
+		                </div>
+
+		                <div class="form-group">
+		                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="rsptkelas3">Tarif RS PT Kelas 3
+		                    </label>
+		                    <div class="col-md-6 col-sm-6 col-xs-12">
+		                      <input onkeyup="changeFormat(this.id, this.value)" type="text" id="rsptkelas3" class="form-control col-md-7 col-xs-12" name="rsptkelas3" placeholder="0" value="{{$tarif->TTarifRad_RSPTKelas3}}">
+		                    </div>
+		                </div>
+
+		                <div class="form-group">
+		                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="drftkelas3">Tarif Dokter FT Kelas 3
+		                    </label>
+		                    <div class="col-md-6 col-sm-6 col-xs-12">
+		                      <input onkeyup="changeFormat(this.id, this.value)" type="text" id="drftkelas3" class="form-control col-md-7 col-xs-12" name="drftkelas3" placeholder="0" value="{{$tarif->TTarifRad_DokterFTKelas3}}">
+		                    </div>
+		                </div>
+
+		                <div class="form-group">
+		                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="drptkelas3">Tarif Dokter PT Kelas 3
+		                    </label>
+		                    <div class="col-md-6 col-sm-6 col-xs-12">
+		                      <input onkeyup="changeFormat(this.id, this.value)" type="text" id="drptkelas3" class="form-control col-md-7 col-xs-12" name="drptkelas3" placeholder="0" value="{{$tarif->TTarifRad_DokterPTKelas3}}">
+		                    </div>
+		                </div>
+
+		                <div class="form-group">
+		                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="kelas3">Tarif Kelas 3
+		                    </label>
+		                    <div class="col-md-6 col-sm-6 col-xs-12">
+		                      <input onkeyup="changeFormat(this.id, this.value)" type="text" id="kelas3" class="form-control col-md-7 col-xs-12" name="kelas3" placeholder="0" required="required" value="{{$tarif->TTarifRad_Kelas3}}">
+		                    </div>
+		                </div>
+
+		                <div class="form-group">
+		                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="tjalan">Tarif Jalan
+		                    </label>
+		                    <div class="col-md-6 col-sm-6 col-xs-12">
+		                      <input type="text" id="tjalan" class="form-control col-md-7 col-xs-12" name="tjalan" placeholder="0" value="{{$tarif->TTarifRad_Jalan}}" onkeyup="changeFormat(this.id, this.value)">
+		                    </div>
+		                </div>
+
+		                <div class="form-group">
+		                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="film1">Tarif Film 1
+		                    </label>
+		                    <div class="col-md-6 col-sm-6 col-xs-12">
+		                      <input type="text" id="film1" class="form-control col-md-7 col-xs-12" name="film1" placeholder="0" value="{{$tarif->TTarifRad_Film1}}" onkeyup="changeFormat(this.id, this.value)">
+		                    </div>
+		                </div>
+
+		                <div class="form-group">
+		                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="film2">Tarif Film 2
+		                    </label>
+		                    <div class="col-md-6 col-sm-6 col-xs-12">
+		                      <input type="text" id="film2" class="form-control col-md-7 col-xs-12" name="film2" placeholder="0" value="{{$tarif->TTarifRad_Film2}}" onkeyup="changeFormat(this.id, this.value)">
+		                    </div>
+		                </div>
+
+		                <div class="form-group">
+		                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="film3">Tarif Film 3
+		                    </label>
+		                    <div class="col-md-6 col-sm-6 col-xs-12">
+		                      <input type="text" id="film3" class="form-control col-md-7 col-xs-12" name="film3" placeholder="0" value="{{$tarif->TTarifRad_Film3}}" onkeyup="changeFormat(this.id, this.value)">
+		                    </div>
+		                </div>
+
+		                <div class="form-group">
+		                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="film4">Tarif Film 4
+		                    </label>
+		                    <div class="col-md-6 col-sm-6 col-xs-12">
+		                      <input type="text" id="film4" class="form-control col-md-7 col-xs-12" name="film4" placeholder="0" value="{{$tarif->TTarifRad_Film4}}" onkeyup="changeFormat(this.id, this.value)">
+		                    </div>
+		                </div>
+
+		                <div class="form-group">
+		                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="film5">Tarif Film 5
+		                    </label>
+		                    <div class="col-md-6 col-sm-6 col-xs-12">
+		                      <input type="text" id="film5" class="form-control col-md-7 col-xs-12" name="film5" placeholder="0" value="{{$tarif->TTarifRad_Film5}}" onkeyup="changeFormat(this.id, this.value)">
+		                    </div>
+		                </div>
+
+		                <div class="form-group">
+		                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="film6">Tarif Film 6
+		                    </label>
+		                    <div class="col-md-6 col-sm-6 col-xs-12">
+		                      <input type="text" id="film6" class="form-control col-md-7 col-xs-12" name="film6" placeholder="0" value="{{$tarif->TTarifRad_Film6}}" onkeyup="changeFormat(this.id, this.value)">
+		                    </div>
+		                </div>
+
+		                <div class="form-group">
+		                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="film7">Tarif Film 7
+		                    </label>
+		                    <div class="col-md-6 col-sm-6 col-xs-12">
+		                      <input type="text" id="film7" class="form-control col-md-7 col-xs-12" name="film7" placeholder="0" value="{{$tarif->TTarifRad_Film7}}" onkeyup="changeFormat(this.id, this.value)">
+		                    </div>
+		                </div>
+
+		                <div class="form-group">
+		                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="tmbfilm">Tarif Tambah Film
+		                    </label>
+		                    <div class="col-md-6 col-sm-6 col-xs-12">
+		                      <input type="text" id="tmbfilm" class="form-control col-md-7 col-xs-12" name="tmbfilm" placeholder="0" value="{{$tarif->TTarifRad_TmbFilm}}" onkeyup="changeFormat(this.id, this.value)">
+		                    </div>
+		                </div>
+
+		                <div class="form-group">
+		                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="jasadokter">Tarif Jasa Dokter
+		                    </label>
+		                    <div class="col-md-6 col-sm-6 col-xs-12">
+		                      <input type="text" id="jasadokter" class="form-control col-md-7 col-xs-12" name="jasadokter" value="{{$tarif->TTarifRad_JasaDokter}}" placeholder="0" onkeyup="changeFormat(this.id, this.value)">
+		                    </div>
+		                </div>
+
+		                <div class="form-group">
+		                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="tindakandokter">Tarif Tindakan Dokter
+		                    </label>
+		                    <div class="col-md-6 col-sm-6 col-xs-12">
+		                      <input type="text" id="tindakandokter" class="form-control col-md-7 col-xs-12" name="tindakandokter" value="{{$tarif->TTarifRad_TindakanDokter}}" placeholder="0" onkeyup="changeFormat(this.id, this.value)">
+		                    </div>
+		                </div>
+
+
+	                    <div class="form-group">
+		                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="perkiraan">Perkiraan Kode 
+		                    </label>
+		                    <div class="col-md-6 col-sm-6 col-xs-12">
+		                     <select id="perkiraan" name="perkiraan" class="form-control col-md-7 col-xs-12">
+		                     	<option value="0"> </option>
+		                     	@foreach($perkkodes as $pk)
+	                          		<option value="{{$pk->TPerkiraan_Kode}}" @if(!empty($tarif->TPerkiraan_Kode)) @if ($pk->TPerkiraan_Kode==$tarif->TPerkiraan_Kode) selected="selected" @endif @endif>{{$pk->TPerkiraan_Nama}}</option>
+	                          	@endforeach      
+		                     </select>
+		                    </div>
+		                </div>
+
+		                <div class="ln_solid"></div>
+
+	                    <div class="row">
+						    <div class="col-md-12 col-sm-12 col-xs-12">
+						    <div class="form-group">
+						      <div class="box-body">
+						        <div class="col-md-12 col-md-offset-5">
+						         <button type="submit" class="btn btn-success"><img src="{!! asset('images/icon/save-icon.png') !!}" width="20" height="20"> Simpan</button>
+						          <a href="/tarifrad" class="btn btn-danger"><img src="{!! asset('images/icon/cancel-icon.png') !!}" width="20" height="20"> Cancel</a>
+						        </div>
+						      </div>
+						    </div>
+						  </div>
+						</div>
+	                </form>
+	            </div>
+	        </div>
+	    </div>	  
+</div>
+
+ <!-- JQuery 1 -->
+<script src="{{ asset('js/jquery.min.js') }}"></script>
+<script src="{{ asset('plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
+
+<!-- Auto Complete Search Asset -->
+<script src="{{ asset('js/jquery-1.10.2.js') }}"></script>
+<script src="{{ asset('js/jquery-ui.js') }}"></script>
+
+<!-- Modal Searching Pasien Lama -->
+<script src="{{ asset('js/searchData.js') }}"></script>
+
+<script type="text/javascript">
+// ================================ auto combo kelompok tarif ===============================
+	$( document ).ready(function() {
+
+      $("#successAlert").fadeTo(2000, 500).slideUp(500, function(){
+          $("#successAlert").slideUp(500);
+      });  
+      
+      changeFormat('vip',$('#vip').val());
+      changeFormat('rsptvip',$('#rsptvip').val());
+      changeFormat('rsftvip',$('#rsftvip').val());
+      changeFormat('drptvip',$('#drptvip').val());
+      changeFormat('drftvip',$('#drftvip').val());
+
+      changeFormat('utama',$('#utama').val());
+      changeFormat('rsptutama',$('#rsptutama').val());
+      changeFormat('rsftutama',$('#rsftutama').val());
+      changeFormat('drptutama',$('#drptutama').val());
+      changeFormat('drftutama',$('#drftutama').val());
+
+      changeFormat('kelas1',$('#kelas1').val());
+      changeFormat('rsptkelas1',$('#rsptkelas1').val());
+      changeFormat('rsftkelas1',$('#rsftkelas1').val());
+      changeFormat('drptkelas1',$('#drptkelas1').val());
+      changeFormat('drftkelas1',$('#drftkelas1').val());
+
+      changeFormat('kelas2',$('#kelas2').val());
+      changeFormat('rsptkelas2',$('#rsptkelas2').val());
+      changeFormat('rsftkelas2',$('#rsftkelas2').val());
+      changeFormat('drptkelas2',$('#drptkelas2').val());
+      changeFormat('drftkelas2',$('#drftkelas2').val());
+
+      changeFormat('kelas3',$('#kelas3').val());
+      changeFormat('rsptkelas3',$('#rsptkelas3').val());
+      changeFormat('rsftkelas3',$('#rsftkelas3').val());
+      changeFormat('drptkelas3',$('#drptkelas3').val());
+      changeFormat('drftkelas3',$('#drftkelas3').val());
+	  changeFormat('tjalan',$('#tjalan').val());
+	  changeFormat('film1',$('#film1').val());
+	  changeFormat('film2',$('#film2').val());
+	  changeFormat('film3',$('#film3').val());
+	  changeFormat('film4',$('#film4').val());
+	  changeFormat('film5',$('#film5').val());
+	  changeFormat('film6',$('#film6').val());
+	  changeFormat('film7',$('#film7').val());
+	  changeFormat('tmbfilm',$('#tmbfilm').val());
+	  changeFormat('jasadokter',$('#jasadokter').val());
+	  changeFormat('tindakandokter',$('#tindakandokter').val());
+	  
+    });
+	$('#kelompok').on('change', function(e){
+	  gantiKode($('#kelompok').val());
+	});
+
+	function gantiKode(kdKel){
+	  kdKel= 'RD'+kdKel;
+	  $.get('/ajax-getautonumberTarifRad?kelompok='+kdKel, function(data){
+	    $('#kode').val(data);
+	  });
+	}
+	// =================================================================================
+</script>
+
+@endsection

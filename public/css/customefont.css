@@ -1,0 +1,178 @@
+
+/* Font Size */
+.font-small{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+
+.font-medium{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+
+.font-large{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+}
+
+/* Type Combobox */
+
+.font-small select{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	border-radius: 3px;
+   	background-color: #f2f9f8;
+}
+
+.font-medium select{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	border-radius: 3px;
+   	background-color: #f2f9f8;
+}
+
+.font-large select{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	border-radius: 3px;
+   	background-color: #f2f9f8;
+}
+
+/* Type Input */
+
+.font-small input{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	border-radius: 3px;
+}
+
+.font-medium input{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	border-radius: 3px;
+}
+
+.font-large input{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	border-radius: 3px;
+}
+
+/* Type Textarea */
+
+.font-small textarea{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	border-radius: 3px;
+}
+
+.font-medium textarea{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	border-radius: 3px;
+}
+
+.font-large textarea{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	border-radius: 3px;
+}
+
+/* Type Button */
+
+.font-small button{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+
+.font-medium button{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+
+.font-large button{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+}
+
+/* Type Link a */
+
+.font-small a{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+
+.font-medium a{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+
+.font-large a{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+}
+
+/* Type Table */
+
+.font-small table, .font-small th, .font-small tr, .font-small td{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+
+.font-medium table, .font-medium th, .font-medium tr, .font-medium td{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+
+
+.font-large table, .font-large th, .font-large tr, .font-large td{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+}
+
+.font-small ul{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+
+.font-medium ul{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+
+.font-large ul{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+}
+
+.font-small li{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+
+.font-medium li{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+
+.font-large li{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+}
+
+/* ==== DIV === */
+.font-small div{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+
+.font-medium div{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+
+.font-large div{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+}
+

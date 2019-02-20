@@ -1,0 +1,54 @@
+.FontRoboto {
+    font-family: 'Roboto', sans-serif;
+}
+
+input[type=text] {
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    background-color: #eff5ff;
+    border-radius: 10px;
+}
+
+input[type=text]:focus {
+    border: 1px solid #555;
+}
+
+textarea[type=text] {
+    border-radius: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    background-color: #eff5ff;
+}
+
+textarea[type=text]:focus {
+    border: 1px solid #555;
+}
+
+.selectstyle select{
+    border-radius: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    background-color: #eff5ff;
+}
+
+.selectstyle select:focus {
+    border: 1px solid #555;
+}
+
+.backgroundform{
+/*background: -webkit-linear-gradient(left, #6FDB9E, #56C6EE);
+  background: -o-linear-gradient(right, #6FDB9E, #56C6EE);
+  background: -moz-linear-gradient(right, #6FDB9E, #56C6EE);
+  background: linear-gradient(to right, #6FDB9E, #56C6EE); */
+ /* background-image: url(../images/BackgroundNonlab.jpg);
+  background-repeat: no-repeat;
+  background-size: 1200px 800px;
+	border-radius: 10px;*/
+	margin-top: -10%;
+	width: 100%;
+	min-height: 100vh;
+	position: fixed;
+	opacity: 0.5;
+	z-index: 0;
+}
+
